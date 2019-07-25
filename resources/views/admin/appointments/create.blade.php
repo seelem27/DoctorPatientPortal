@@ -15,7 +15,7 @@
 		@if (session('alert'))
     		<div class="alert alert-danger failed-alert">
         		{{ session('alert') }}
-    		</div>
+			</div>
 		@endif
         
         <div class="panel-body">
@@ -281,8 +281,8 @@
 
 	<script>
 		$(document).ready(function() {
-			$("#failed-alert").fadeTo(2000, 500).slideUp(500, function() {
-				$("#failed-alert").slideUp(500);
+			$(".failed-alert").fadeTo(2000, 500).slideUp(500, function() {
+				$(".failed-alert").slideUp(500);
 			});        
 		});
 	</script>

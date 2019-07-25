@@ -10,7 +10,7 @@
     @endcan
 
     @if (session('alert'))
-    	<div class="alert alert-success" id="success-alert">
+    	<div class="alert alert-success success-alert">
         	{{ session('alert') }}
     	</div>
 	@endif
@@ -104,14 +104,12 @@
 
 @section('javascript')
     <script>
-        @can('appointment_delete')
-            window.route_mass_crud_entries_destroy = '{{ route('admin.appointments.mass_destroy') }}';
-        @endcan
-
+        $(document).ready(function() {
+            $(".success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                $(".success-alert").slideUp(500);
+            });        
+        });
     </script>
-
-    {{-- <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js'></script> --}}
     
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -128,8 +126,6 @@
     <script src="../../plugins/datatables/jquery.dataTables.js"></script>
     <script src="../../plugins/datatables/dataTables.bootstrap4.js"></script>
 
-    {{-- <script src='fullcalendar/interaction/main.js'></script>
-    <script src='fullcalendar/daygrid/main.js'></script> --}}
     <script>
             $(function () {
               /* initialize the external events
@@ -266,13 +262,5 @@
                 $('#new-event').val('')
               })
             })
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            $("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
-                $("#success-alert").slideUp(500);
-            });        
-        });
     </script>
 @endsection

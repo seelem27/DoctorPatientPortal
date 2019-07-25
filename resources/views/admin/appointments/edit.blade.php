@@ -104,12 +104,6 @@
 
     <script>
         $('.datetime').datetimepicker({
-            //autoclose: true,
-            // format:{
-            //     dateFormat: "{{ config('app.date_format_js') }}",
-            //     timeFormat: "HH:mm:ss"
-            // },
-            //allowInputToggle: true,
             format: 'YYYY-MM-DD HH:mm'
         }).on('dp.show', function () {
             $('a.btn[data-action="incrementMinutes"], a.btn[data-action="decrementMinutes"]').removeAttr('data-action').attr('disabled', true);

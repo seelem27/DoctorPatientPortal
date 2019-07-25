@@ -84,10 +84,12 @@ class AppointmentsController extends Controller
         if(!$doctor->provides_service($request->service_id)) return redirect()->back()->withErrors("This doctor doesn't provide your selected service")->withInput();
             if($working_hours->isEmpty()) return redirect()->back()->withErrors("This doctor isn't working at your selected time")->withInput();
         
-        $booking = Appointment::where('doctor_id', '=', $request->doctor_id)->where('start_time', '<=', $endTime)->where('finish_time', '>=', $startTime)->count();
+        $booking = Appointment::where('doctor_id', '=', $request->doctor_id)->where('start_time', '<', $endTime)->where('finish_time', '>', $startTime)->count();
 
         if($booking > 0) {
             return redirect()->back()->with('alert', 'This date and time have already been booked. Please try another time');
+        } else if($endTime <= $startTime){
+            return redirect()->back()->with('alert', 'Appointment booking end time must be larger than start time');
         } else {
             $appointment = new Appointment;
             $appointment->patient_id = $request->patient_id;
@@ -96,9 +98,9 @@ class AppointmentsController extends Controller
             $appointment->finish_time = "".$request->date." ".$request->finish_hour .":".$request->finish_minute.":00";
             $appointment->comments = $request->comments;
             $appointment->save();
-        }      
+        }   
 
-        return redirect()->route('admin.appointments.index');
+        return redirect()->route('admin.appointments.index')->with('alert', 'Appointment booked successful');
     }
 
     /**
