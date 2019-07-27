@@ -44,8 +44,8 @@
                 <thead>
                     <tr>
                         <th>Patient name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>Patient Phone</th>
+                        <th>Patient Email</th>
                         <th>Doctor Name</th>
                         <th>Start Time</th>
                         <th>Finish Time</th>
@@ -60,7 +60,7 @@
                     <tr data-entry-id="{{ $appointment->id }}">
                         <td>{{ $appointment->patient->name or '' }}</td>
                         <td>{{ isset($appointment->patient) ? $appointment->patient->phone : '' }}</td>
-                        <td>{{ isset($appointment->patient) ? $appointment->patient->email : '' }}</td>
+                        <td>{{ isset($appointment->patient) ? $appointment->patient->users->email : '' }}</td>
                         <td>{{ $appointment->doctor->name or '' }}</td>
                         <td>{{ $appointment->start_time }}</td>
                         <td>{{ $appointment->finish_time }}</td>

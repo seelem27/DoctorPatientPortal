@@ -1,7 +1,10 @@
 @extends('layouts.auth')
 
 @section('content')
-    <div class="row">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
+    <div class="row" style="background-color:#3c8dbc">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">{{ ucfirst(config('app.name')) }} Register</div>
@@ -60,21 +63,15 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-md-4 control-label">Date of Birth</label>
-    
-                            <div class="col-md-6">
-                                <style>
-                                    ::-webkit-datetime-edit-year-field:not([aria-valuenow]),
-                                    ::-webkit-datetime-edit-month-field:not([aria-valuenow]),
-                                    ::-webkit-datetime-edit-day-field:not([aria-valuenow]) {
-                                        color: transparent;
-                                    }
-                                </style>
-                                <input type="date"
-                                    class="form-control"
-                                    name="dob"
-                                    id="dob">
-                            </div>
+                            <label class="col-md-4 control-label">Date of Birth</label>                            
+                            <div class='col-sm-6'>
+                                <div class='input-group date' id='datetimepicker3'>
+                                    <input type='text' class="form-control" />
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar-o open-datetimepicker"></span>
+                                    </span>
+                                </div>
+                            </div>                           
                         </div>
 
                         <div class="form-group">
@@ -105,7 +102,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit"
-                                    class="btn btn-primary"
+                                    class="btn btn-success"
                                     style="margin-right: 15px;">
                                     Submit
                                 </button>
@@ -123,5 +120,19 @@
     </div>
 @endsection
                             
+@section('javascript')
+    @parent
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker3').datetimepicker({
+                format: 'DD-MM-YYYY',
+            });
+        });
+    </script>
+@stop
                     
