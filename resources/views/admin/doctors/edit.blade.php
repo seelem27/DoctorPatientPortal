@@ -65,8 +65,22 @@
         </div>
     </section>
 
-    {!! Form::submit(trans('Update'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
+    <div class="form-group">
+        <div class="container-fluid">
+            <button type="submit"
+                class="btn btn-success"
+                style="margin-right: 15px;">
+                Update
+            </button>
+            <a class="btn btn-default btn-close"
+                href="{{ route('admin.patients.index') }}"
+                style="margin-right: 15px; background-color:red; color:white ">
+                Cancel
+            </a>
+        </div>
+    </div>
+    {{-- {!! Form::submit(trans('Update'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!} --}}
 @stop
 
 @section('javascript')

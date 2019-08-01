@@ -123,10 +123,14 @@ class DoctorsController extends Controller
         }
         $doctor = Doctor::findOrFail($id);
 
-        $services_ids = [];
-        $services_ids[] = $request->service_id;
-        
-		$doctor->services()->attach($services_ids);
+        $service = $request->service_id;
+
+        if(($doctor->services())->count() == 0) {
+            $doctor->services()->attach($service);
+        } else {
+
+        }
+
         $doctor->update($request->all());
 
         return redirect()->route('admin.doctors.index');
