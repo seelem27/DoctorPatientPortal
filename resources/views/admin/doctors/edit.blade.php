@@ -73,7 +73,7 @@
                 Update
             </button>
             <a class="btn btn-default btn-close"
-                href="{{ route('admin.patients.index') }}"
+                href="{{ route('admin.doctors.index') }}"
                 style="margin-right: 15px; background-color:red; color:white ">
                 Cancel
             </a>
