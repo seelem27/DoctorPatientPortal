@@ -94,8 +94,8 @@
                 <thead>
                     <tr>
                         <th>Patient Name</th>
-                        <th>Phone</th>
-                        <th>Email</th>
+                        <th>Patient Phone</th>
+                        <th>Patient Email</th>
                         <th>Doctor Name</th>
                         <th>Start Time</th>
                         <th>Finish Time</th>
@@ -110,14 +110,14 @@
                             <tr data-entry-id="{{ $appointment->id }}">
                                 <td>{{ $appointment->patient->name or '' }}</td>
                                 <td>{{ isset($appointment->patient) ? $appointment->patient->phone : '' }}</td>
-                                <td>{{ isset($appointment->patient) ? $appointment->patient->email : '' }}</td>
+                                <td>{{ isset($appointment->patient) ? $appointment->patient->users->email : '' }}</td>
                                 <td>{{ $appointment->doctor->name or '' }}</td>
                                 <td>{{ $appointment->start_time }}</td>
                                 <td>{{ $appointment->finish_time }}</td>
                                 <td>{!! $appointment->comments !!}</td>
                                 <td>
                                     @can('appointment_view')
-                                        <a href="{{ route('admin.appointments.show',[$appointment->id]) }}" class="btn btn-xs btn-primary">View)</a>
+                                        <a href="{{ route('admin.appointments.show',[$appointment->id]) }}" class="btn btn-xs btn-primary">View</a>
                                     @endcan
 
                                     @can('appointment_edit')
