@@ -8,7 +8,7 @@
     </p>
     @endcan --}}
 
-    <content class="box">
+    <section class="box">
         <div class="box-header">
             <h3 class="box-title">Nurse List</h3>
         </div>
@@ -62,7 +62,7 @@
                 </tbody>
             </table>
         </div>
-    </content>
+    </section>
 @stop
 
 @section('javascript') 

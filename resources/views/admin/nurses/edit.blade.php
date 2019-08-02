@@ -5,9 +5,9 @@
     
     {!! Form::model($nurse, ['method' => 'PUT', 'route' => ['admin.nurses.update', $nurse->id]]) !!}
 
-    <div class="panel panel-default">
+    <section class="panel panel-default">
         <div class="panel-heading">
-            Edit
+            <h3 class="box-title">Edit Nurse</h3>
         </div>
 
         <div class="panel-body">
@@ -50,10 +50,25 @@
                 </div>
             </div>
         </div>
+    </section>
+
+    <div class="form-group">
+        <div class="container-fluid">
+            <button type="submit"
+                class="btn btn-success"
+                style="margin-right: 15px;">
+                Update
+            </button>
+            <a class="btn btn-default btn-close"
+                href="{{ route('admin.nurses.index') }}"
+                style="margin-right: 15px; background-color:red; color:white ">
+                Cancel
+            </a>
+        </div>
     </div>
 
-    {!! Form::submit(trans('Update'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
+    {{-- {!! Form::submit(trans('Update'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!} --}}
 @stop
 
 @section('javascript')
