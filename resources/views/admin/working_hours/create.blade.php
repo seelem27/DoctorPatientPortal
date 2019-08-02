@@ -2,6 +2,10 @@
 
 @section('content')
     <h3 class="page-title">Working Hours</h3>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+
     {!! Form::open(['method' => 'POST', 'route' => ['admin.working_hours.store']]) !!}
 
     <div class="panel panel-default">
@@ -43,8 +47,13 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('start_time', 'Start time*', ['class' => 'control-label']) !!}
-                    {!! Form::text('start_time', old('start_time'), ['class' => 'form-control timepicker', 'placeholder' => '', 'required' => '']) !!}
+                <label>Start Time</label>
+                    <div class="input-group datetime">
+                        <div class="input-group-addon">
+                            <i class="fa fa-clock-o open-datetimepicker"></i>
+                        </div>
+                        {!! Form::text('start_time', old('start_time'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
+                    </div>
                     <p class="help-block"></p>
                     @if($errors->has('start_time'))
                         <p class="help-block">
@@ -56,8 +65,13 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
-                    {!! Form::label('finish_time', 'Finish time', ['class' => 'control-label']) !!}
-                    {!! Form::text('finish_time', old('finish_time'), ['class' => 'form-control timepicker', 'placeholder' => '']) !!}
+                <label>Finish Time</label>
+                    <div class="input-group datetime">
+                        <div class="input-group-addon">
+                            <i class="fa fa-clock-o open-datetimepicker"></i>
+                        </div>
+                        {!! Form::text('finish_time', old('finish_time'), ['class' => 'form-control', 'placeholder' => '']) !!}
+                    </div>
                     <p class="help-block"></p>
                     @if($errors->has('finish_time'))
                         <p class="help-block">
@@ -65,48 +79,53 @@
                         </p>
                     @endif
                 </div>
-            </div>            
+            </div>             
         </div>
     </div>
 
-    {!! Form::submit(trans('Save'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
+    <div class="form-group">
+        <div class="container-fluid">
+            <button type="submit"
+                class="btn btn-success"
+                style="margin-right: 15px;">
+                Create
+            </button>
+            <a class="btn btn-default btn-close"
+                href="{{ route('admin.working_hours.index') }}"
+                style="margin-right: 15px; background-color:red; color:white ">
+                Cancel
+            </a>
+        </div>
+    </div>
+
+    {{-- {!! Form::submit(trans('Save'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!} --}}
 @stop
 
 @section('javascript')
     @parent
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-    
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
     <script>
-        $('.timepicker').datetimepicker({
-            autoclose: true,
-            interval: 60,
-            timeFormat: 'HH:mm:ss',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true           
+        $('.datetime').datetimepicker({
+            format: "HH:00:00",
+        }).on('dp.show', function () {
+            $('a.btn[data-action="incrementMinutes"], a.btn[data-action="decrementMinutes"]').removeAttr('data-action').attr('disabled', true);
+            $('a.btn[data-action="incrementSeconds"], a.btn[data-action="decrementSeconds"]').removeAttr('data-action').attr('disabled', true);
+            $('span.timepicker-minute[data-action="showMinutes"]').removeAttr('data-action').attr('disabled', true).text('00');
+            $('span.timepicker-second[data-action="showSeconds"]').removeAttr('data-action').attr('disabled', true).text('00');
+        }).on('dp.change', function () {
+            $(this).val($(this).val().split(':')[0]+':00')
+            $('span.timepicker-minute').text('00')
         });
     </script>
-    <script>
-        $(function() {
-          $('.date').daterangepicker({
-            singleDatePicker: true,
-            showDropdowns: true,
-            // minYear: 1901,
-            // maxYear: parseInt(moment().format('YYYY'),10),
-            minDate: 0,
-            locale: {
-                format: "YYYY-MM-DD",
-            }
-          }, function(start, end, label) {
-            var years = moment().diff(start, 'years');
-            console.log(start, end, label);
-          });
-        });
+    
+    <script type="text/javascript">
+    $('.date').datetimepicker({
+        format: "YYYY-MM-DD",
+    });
     </script>
 @stop

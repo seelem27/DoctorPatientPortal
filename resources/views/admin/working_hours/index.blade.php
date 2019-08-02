@@ -8,6 +8,12 @@
     </p>
     @endcan
 
+    @if (session('alert'))
+    	<div class="alert alert-success success-alert">
+        	{{ session('alert') }}
+    	</div>
+	  @endif
+
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
@@ -22,6 +28,12 @@
         folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
+    <style>
+        .fc-month-view span.fc-title{
+              white-space: normal;
+        }
+    </style>
+    
     <div class="row">
         <div id='calendar'></div>
     </div>
@@ -78,6 +90,11 @@
                   center: 'title',
                   right : 'month,agendaWeek,agendaDay'
                 },
+                windowResize: true,
+                //defaultView: 'agendaDay',
+                contentHeight: 'auto',
+                minTime: "07:00:00",
+                maxTime: "22:00:00",
                 buttonText: {
                   today: 'today',
                   month: 'month',
@@ -91,10 +108,16 @@
                         title : '{{ $hour->doctor->name }}',
                         start : '{{ $hour->date . ' ' . $hour->start_time }}',
                         end : '{{ $hour->date . ' ' . $hour->finish_time }}',
+                        description: 'Doctor working hours',
                         url : '{{ route('admin.working_hours.edit', $hour->id) }}'
                     },
                     @endforeach
                 ],
+                eventRender: function(event, element) {
+                element.find('.fc-title').append("<br/>" + event.description);
+                },
+                timeFormat: 'h(:mm)a',
+                displayEventEnd: true,
                 editable  : false,
                 droppable : false, // this allows things to be dropped onto the calendar !!!
                 drop      : function (date, allDay) { // this function is called when something is dropped

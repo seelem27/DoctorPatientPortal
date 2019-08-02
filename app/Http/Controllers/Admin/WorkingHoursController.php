@@ -114,7 +114,7 @@ class WorkingHoursController extends Controller
         $working_hour = WorkingHour::findOrFail($id);
         $working_hour->update($request->all());
         
-        return redirect()->route('admin.working_hours.index');
+        return redirect()->route('admin.working_hours.index')->with('alert', 'Update Successfully');
     }
 
     /**
