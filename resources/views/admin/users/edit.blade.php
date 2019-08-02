@@ -11,7 +11,7 @@
         </div>
 
         <div class="panel-body">
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('name', 'Name*', ['class' => 'control-label']) !!}
                     {!! Form::text('name', old('name'), ['class' => 'form-control', 'placeholder' => '', 'required' => '']) !!}
@@ -22,7 +22,7 @@
                         </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row">
                 <div class="col-xs-12 form-group">
@@ -50,7 +50,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            {{-- <div class="row">
                 <div class="col-xs-12 form-group">
                     {!! Form::label('role_id', 'Role*', ['class' => 'control-label']) !!}
                     {!! Form::select('role_id', $roles, old('role_id'), ['class' => 'form-control select2', 'required' => '']) !!}
@@ -61,11 +61,26 @@
                         </p>
                     @endif
                 </div>
-            </div>            
+            </div>             --}}
         </div>
     </div>
 
-    {!! Form::submit(trans('Update'), ['class' => 'btn btn-danger']) !!}
-    {!! Form::close() !!}
+    <div class="form-group">
+        <div class="container-fluid">
+            <button type="submit"
+                class="btn btn-success"
+                style="margin-right: 15px;">
+                Update
+            </button>
+            <a class="btn btn-default btn-close"
+                href="{{ route('admin.users.index') }}"
+                style="margin-right: 15px; background-color:red; color:white ">
+                Cancel
+            </a>
+        </div>
+    </div>
+
+    {{-- {!! Form::submit(trans('Update'), ['class' => 'btn btn-danger']) !!}
+    {!! Form::close() !!} --}}
 @stop
 
