@@ -2,27 +2,24 @@
 
 @section('content')
     <h3 class="page-title">Roles</h3>
-    @can('role_create')
+    {{-- @can('role_create')
     <p>
         <a href="{{ route('admin.roles.create') }}" class="btn btn-success">Add New</a>        
     </p>
-    @endcan
+    @endcan --}}
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            List
+    <section class="box">
+        <div class="box-header">
+            <h3 class="box-title">Role List</h3>
         </div>
 
-        <div class="panel-body table-responsive">
-            <table class="table table-bordered table-striped {{ count($roles) > 0 ? 'datatable' : '' }} @can('role_delete') dt-select @endcan">
+        <div class="box-body table-responsive no-padding">
+            <table class="table table-hover">
                 <thead>
                     <tr>
-                        @can('role_delete')
-                            <th style="text-align:center;"><input type="checkbox" id="select-all" /></th>
-                        @endcan
-
+                        <th>Id</th>
                         <th>Role</th>
-                        <th>&nbsp;</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 
@@ -30,10 +27,7 @@
                     @if (count($roles) > 0)
                         @foreach ($roles as $role)
                             <tr data-entry-id="{{ $role->id }}">
-                                @can('role_delete')
-                                    <td></td>
-                                @endcan
-
+                                <td>{{ $role->id }}</td>
                                 <td>{{ $role->title }}</td>
                                 <td>
                                     {{-- @can('role_view')
@@ -42,7 +36,7 @@
                                     @can('role_edit')
                                     <a href="{{ route('admin.roles.edit',[$role->id]) }}" class="btn btn-xs btn-info">Edit</a>
                                     @endcan
-                                    @can('role_delete')
+                                    {{-- @can('role_delete')
                                     {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
@@ -50,7 +44,7 @@
                                         'route' => ['admin.roles.destroy', $role->id])) !!}
                                     {!! Form::submit(trans('Delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
-                                    @endcan
+                                    @endcan --}}
                                 </td>
                             </tr>
                         @endforeach
@@ -62,7 +56,7 @@
                 </tbody>
             </table>
         </div>
-    </div>
+    </section>
 @stop
 
 @section('javascript') 
