@@ -17,7 +17,7 @@
                             <td>{{ $service->name }}</td>
                         </tr>
                         <tr>
-                            <th>Price</th>
+                            <th>Price (RM)</th>
                             <td>{{ $service->price }}</td>
                         </tr>
                     </table>

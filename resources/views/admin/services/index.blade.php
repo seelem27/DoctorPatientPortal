@@ -21,7 +21,7 @@
                         <th>Id</th>
                         <th>Service Name</th>
                         <th>Price (RM)</th>
-                        <th>&nbsp;</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 
@@ -41,7 +41,7 @@
                                     <a href="{{ route('admin.services.edit',[$service->id]) }}" class="btn btn-xs btn-info">Edit</a>
                                     @endcan
                                     
-                                    @can('service_delete')
+                                    {{-- @can('service_delete')
                                     {!! Form::open(array(
                                         'style' => 'display: inline-block;',
                                         'method' => 'DELETE',
@@ -49,7 +49,7 @@
                                         'route' => ['admin.services.destroy', $service->id])) !!}
                                     {!! Form::submit(trans('Delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                     {!! Form::close() !!}
-                                    @endcan
+                                    @endcan --}}
                                 </td>
                             </tr>
                         @endforeach
