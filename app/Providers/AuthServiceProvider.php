@@ -72,36 +72,36 @@ class AuthServiceProvider extends ServiceProvider
 		
         // Auth gates for: Services
         Gate::define('service_access', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('service_create', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('service_edit', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('service_view', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('service_delete', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });		
 
         // Auth gates for: Patients
         Gate::define('patient_access', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('patient_create', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('patient_edit', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('patient_view', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('patient_delete', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [0]);
         });        
         Gate::define('patient_info', function($user){
             return in_array($user->role_id, [4]);
@@ -109,72 +109,84 @@ class AuthServiceProvider extends ServiceProvider
 
         // Auth gates for: Nurses
         Gate::define('nurse_access', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('nurse_create', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [0]);
         });
         Gate::define('nurse_edit', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, []);
         });
         Gate::define('nurse_view', function ($user) {
-            return in_array($user->role_id, [1, 2]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('nurse_delete', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [0]);
         });
 
         // Auth gates for: Doctors
         Gate::define('doctor_access', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('doctor_create', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [0]);
         });
         Gate::define('doctor_edit', function ($user) {
-            return in_array($user->role_id, [1, 3]);
+            return in_array($user->role_id, [3]);
         });
         Gate::define('doctor_view', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('doctor_delete', function ($user) {
-            return in_array($user->role_id, [1]);
+            return in_array($user->role_id, [0]);
         });
 
         // Auth gates for: Working hours
         Gate::define('working_hour_access', function ($user) {
-            return in_array($user->role_id, [1, 2, 3, 4]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('working_hour_create', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('working_hour_edit', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('working_hour_view', function ($user) {
-            return in_array($user->role_id, [1, 2, 3, 4]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('working_hour_delete', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
 
         // Auth gates for: Appointments
         Gate::define('appointment_access', function ($user) {
-            return in_array($user->role_id, [1, 2, 3, 4]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('appointment_create', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2]);
         });
         Gate::define('appointment_edit', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('appointment_view', function ($user) {
-            return in_array($user->role_id, [1, 2, 3, 4]);
+            return in_array($user->role_id, [2, 3]);
         });
         Gate::define('appointment_delete', function ($user) {
-            return in_array($user->role_id, [1, 2, 3]);
+            return in_array($user->role_id, [2, 3]);
         });
-        Gate::define('appointment_info', function($user){
+        Gate::define('appointment_info', function($user) {
+            return in_array($user->role_id, [4]);
+        });
+        Gate::define('appointment_patient_create', function ($user) {
+            return in_array($user->role_id, [4]);
+        });
+        Gate::define('appointment_patient_edit', function($user) {
+            return in_array($user->role_id, [4]);
+        });
+        Gate::define('appointment_patient_view', function($user){
+            return in_array($user->role_id, [4]);
+        });
+        Gate::define('appointment_patient_delete', function($user){
             return in_array($user->role_id, [4]);
         });
     }

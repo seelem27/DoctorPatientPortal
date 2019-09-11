@@ -58,8 +58,11 @@
                         <th>Doctor Name</th>
                         <th>Start Time</th>
                         <th>Finish Time</th>
+                        <th>Weight(KG)</th>
+                        <th>Height(cm)</th>
+                        <th>bloodPressure(mmhg)</th>
                         <th>Comments</th>
-                        <th>&nbsp;</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
 
@@ -74,6 +77,9 @@
                                 <td>{{ $appointment->doctor->name or '' }}</td>
                                 <td>{{ $appointment->start_time }}</td>
                                 <td>{{ $appointment->finish_time }}</td>
+                                <td>{{ $appointment->weight }}</td>
+                                <td>{{ $appointment->height }}</td>
+                                <td>{{ $appointment->bloodPressure }}</td>
                                 <td>{!! $appointment->comments !!}</td>
                                 <td>
                                     @can('appointment_view')

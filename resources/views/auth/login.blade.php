@@ -1,6 +1,13 @@
 @extends('layouts.auth')
 
 @section('content')
+
+    @if (session('alert'))
+        <div class="alert alert-success success-alert">
+            {{ session('alert') }}
+        </div>
+    @endif
+
     <div class="row" style="background-color:#3c8dbc">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -86,4 +93,14 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('javascript')
+    <script>
+        $(document).ready(function() {
+            $(".success-alert").fadeTo(2000, 500).slideUp(500, function() {
+                $(".success-alert").slideUp(500);
+            });        
+        });
+    </script>
 @endsection

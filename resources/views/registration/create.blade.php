@@ -62,7 +62,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="col-md-4 control-label">Date of Birth</label>                            
                             <div class='col-sm-6'>
                                 <div class='input-group date' id='datetimepicker3'>
@@ -72,7 +72,7 @@
                                     </span>
                                 </div>
                             </div>                           
-                        </div>
+                        </div> --}}
 
                         <div class="form-group">
                             <label class="col-md-4 control-label">Phone</label>
@@ -80,7 +80,7 @@
                             <div class="col-md-6">
                                 <input type="text"
                                     class="form-control"
-                                    pattern="^0(10|12|13|14|16|17|18)\d{7}$"
+                                    {{-- pattern="^0(10|12|13|14|16|17|18)\d{7}$" --}}
                                     name="phone"
                                     id="phone">
                             </div>

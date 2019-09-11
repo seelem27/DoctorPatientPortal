@@ -78,6 +78,45 @@
 
             <div class="row">
                 <div class="col-xs-12 form-group">
+                    {!! Form::label('weight', 'Weight(Kg)', ['class' => 'control-label']) !!}
+                    {!! Form::text('weight', old('weight'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('weight'))
+                        <p class="help-block">
+                            {{ $errors->first('weight') }}
+                        </p>
+                    @endif
+                </div>
+			</div>
+
+			<div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('height', 'Height(cm)', ['class' => 'control-label']) !!}
+                    {!! Form::text('height', old('height'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('height'))
+                        <p class="help-block">
+                            {{ $errors->first('height') }}
+                        </p>
+                    @endif
+                </div>
+			</div>
+
+			<div class="row">
+                <div class="col-xs-12 form-group">
+                    {!! Form::label('bloodPressure', 'Blood Pressure(mmhg)', ['class' => 'control-label']) !!}
+                    {!! Form::text('bloodPressure', old('bloodPressure'), ['class' => 'form-control ', 'placeholder' => '']) !!}
+                    <p class="help-block"></p>
+                    @if($errors->has('bloodPressure'))
+                        <p class="help-block">
+                            {{ $errors->first('bloodPressure') }}
+                        </p>
+                    @endif
+                </div>
+			</div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
                     {!! Form::label('comments', 'Comments', ['class' => 'control-label']) !!}
                     {!! Form::textarea('comments', old('comments'), ['class' => 'form-control ', 'placeholder' => '']) !!}
                     <p class="help-block"></p>

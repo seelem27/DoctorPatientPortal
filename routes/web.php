@@ -54,7 +54,12 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'as' => 'admin.'], 
     
     Route::resource('appointments', 'Admin\AppointmentsController');
     Route::get('appointments_get_appt', ['uses' => 'Admin\AppointmentsController@get_appt', 'as' => 'appointments.get_appt']);
-    Route::post('appointment_edit_appt', ['uses' => 'Admin\AppointmemtsController@edit_appt', 'as' => 'appointments.edit_appt']);
+    Route::get('appointments_create_appt', ['uses' => 'Admin\AppointmentsController@create_appt', 'as' => 'appointments.create_appt']);
+    Route::post('appointments_store_appt', ['uses' => 'Admin\AppointmentsController@store_appt', 'as' => 'appointments.store_appt']);
+    Route::get('appointments_edit_appt/{id}', ['uses' => 'Admin\AppointmentsController@edit_appt', 'as' => 'appointments.edit_appt']);
+    Route::put('appointments_update_appt/{id}', ['uses' => 'Admin\AppointmentsController@update_appt', 'as' => 'appointments.update_appt']);
+    Route::get('appointments_show_appt/{id}', ['uses' => 'Admin\AppointmentsController@show_appt', 'as' => 'appointments.show_appt']);
+    Route::delete('appointments_destroy_appt/{id}', ['uses' => 'Admin\AppointmentsController@destroy_appt', 'as' => 'appointments.destroy_appt']);
     Route::post('appointments_mass_destroy', ['uses' => 'Admin\AppointmentsController@massDestroy', 'as' => 'appointments.mass_destroy']);
     
     Route::resource('services', 'Admin\ServicesController');

@@ -49,7 +49,7 @@
                                                 'method' => 'DELETE',
                                                 'onsubmit' => "return confirm('".trans("Are you sure")."');",
                                                 'route' => ['admin.users.destroy', $user->id])) !!}
-                                            {!! Form::submit(trans('Delete'), array('class' => 'btn btn-xs btn-danger')) !!}
+                                            {!! Form::submit(trans('Deactivate'), array('class' => 'btn btn-xs btn-danger')) !!}
                                             {!! Form::close() !!}
                                         @endif
                                     @endcan

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Role;
-use App\PersonalInfo;
+use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -96,12 +96,12 @@ class RegisterController extends Controller
 
        $user->save();
 
-       $personalInfo = new PersonalInfo;
+       $patient = new Patient;
 
-       $personalInfo->fill($request->all());
-       $personalInfo->user_id = $user->id;
-       $personalInfo->save();
+       $patient->fill($request->all());
+       $patient->user_id = $user->id;
+       $patient->save();
 
-       return view('auth.login');
+       return view('auth.login')->with('alert', 'User account created successfully');
     }
 }

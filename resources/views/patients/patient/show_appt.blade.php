@@ -58,7 +58,7 @@
 
             <p>&nbsp;</p>
 
-            <a href="{{ route('admin.appointments.index') }}" class="btn btn-default">Back to list</a>
+            <a href="{{ route('admin.appointments.get_appt') }}" class="btn btn-default">Back to list</a>
         </div>
     </div>
 @stop

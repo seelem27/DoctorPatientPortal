@@ -49,6 +49,9 @@
                         <th>Doctor Name</th>
                         <th>Start Time</th>
                         <th>Finish Time</th>
+                        <th>Weight</th>
+                        <th>Height</th>
+                        <th>Blood Pressure</th>
                         <th>Comments</th>
                         <th>Action</th>
                     </tr>
@@ -64,6 +67,9 @@
                         <td>{{ $appointment->doctor->name or '' }}</td>
                         <td>{{ $appointment->start_time }}</td>
                         <td>{{ $appointment->finish_time }}</td>
+                        <td>{{ $appointment->weight }}</td>
+                        <td>{{ $appointment->height }}</td>
+                        <td>{{ $appointment->bloodPressure }}</td>
                         <td>{!! $appointment->comments !!}</td>
                         <td>
                             @can('appointment_view')
@@ -78,7 +84,7 @@
                                 {!! Form::open(array(
                                     'style' => 'display: inline-block;',
                                     'method' => 'DELETE',
-                                    'onsubmit' => "return confirm('".trans("quickadmin.qa_are_you_sure")."');",
+                                    'onsubmit' => "return confirm('".trans("Are_you_sure?")."');",
                                     'route' => ['admin.appointments.destroy', $appointment->id])) !!}
                                 {!! Form::submit(trans('Delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                 {!! Form::close() !!}

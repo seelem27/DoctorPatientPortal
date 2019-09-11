@@ -21,6 +21,9 @@ class CreateAppointmentsTable extends Migration
             $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
             $table->datetime('start_time')->nullable();
             $table->datetime('finish_time')->nullable();
+            $table->integer('weight')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('bloodPressure')->nullable();
             $table->text('comments')->nullable();
 
             $table->timestamps();

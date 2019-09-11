@@ -59,7 +59,7 @@
                 <li class="{{ $request->segment(2) == 'appointments' ? 'active' : '' }}">
                     <a href="{{ route('admin.appointments.index') }}">
                         <i class="fa fa-calendar"></i>
-                        <span class="title">Appointemnts</span>
+                        <span class="title">Appointments</span>
                     </a>
                 </li>
                 @endcan

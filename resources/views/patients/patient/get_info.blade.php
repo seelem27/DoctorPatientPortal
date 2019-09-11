@@ -49,6 +49,9 @@
                         <th>Doctor Name</th>
                         <th>Start Time</th>
                         <th>Finish Time</th>
+                        <th>Weight(KG)</th>
+                        <th>Height(cm)</th>
+                        <th>bloodPressure(mmhg)</th>
                         <th>Comments</th>
                         <th>Action</th>
                     </tr>
@@ -64,22 +67,26 @@
                         <td>{{ $appointment->doctor->name or '' }}</td>
                         <td>{{ $appointment->start_time }}</td>
                         <td>{{ $appointment->finish_time }}</td>
+                        <td>{{ $appointment->weight }}</td>
+                        <td>{{ $appointment->height }}</td>
+                        <td>{{ $appointment->bloodPressure }}</td>
                         <td>{!! $appointment->comments !!}</td>
                         <td>
-                            @can('appointment_view')
-                                <a href="{{ route('admin.appointments.show',[$appointment->id]) }}" class="btn btn-xs btn-primary">View</a>
+                            {{-- modify patient access action --}}
+                            @can('appointment_patient_create')
+                                <a href="{{ route('admin.appointments.show_appt',[$appointment->id]) }}" class="btn btn-xs btn-primary">View</a>
                             @endcan
 
-                            @can('appointment_edit')
-                                <a href="{{ route('admin.appointments.edit',[$appointment->id]) }}" class="btn btn-xs btn-info">Edit</a>
+                            @can('appointment_patient_edit')
+                                <a href="{{ route('admin.appointments.edit_appt',[$appointment->id]) }}" class="btn btn-xs btn-info">Edit</a>
                             @endcan
 
-                            @can('appointment_delete')
+                            @can('appointment_patient_delete')
                                 {!! Form::open(array(
                                     'style' => 'display: inline-block;',
                                     'method' => 'DELETE',
                                     'onsubmit' => "return confirm('".trans("Are you sure?")."');",
-                                    'route' => ['admin.appointments.destroy', $appointment->id])) !!}
+                                    'route' => ['admin.appointments.destroy_appt', $appointment->id])) !!}
                                 {!! Form::submit(trans('Delete'), array('class' => 'btn btn-xs btn-danger')) !!}
                                 {!! Form::close() !!}
                             @endcan
